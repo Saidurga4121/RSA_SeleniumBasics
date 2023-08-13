@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests">
+<parameter name="url" value="google.com"></parameter>
+<parameter name="name" value="saidurga"></parameter>
+     <groups>
+	  		<run>   
+	  			<exclude name="Smoke1"></exclude>  			
+	  		</run>
+	  </groups>
+	  <test thread-count="5" name="Basics1Basics2" parallel="classes">
+	  <!-- parameter will be in scope for test level if written in test-->
+	  <parameter name="url" value="google1.com"></parameter>
+		  <!-- this will execute all the testcases in that specific package-->
+		  <!-- <packages>
+		  		<package name="annotations"></package>
+		  </packages> -->
+			    <classes>
+			    	<class name="annotations.Basics1">
+			         		<methods> 
+			                    <!-- if u write include , only that method will be executed-->
+			          			<!-- regular expressions , whatever that starts with ..it will include in execution-->
+			          			<!--<include name="b.*"/>-->
+			         	    </methods> 
+			        </class>
+			        <class name="annotations.Basics2">
+			        		<!--<methods>
+			        		      <exclude name="test3"/>
+			        		</methods>-->
+			        </class>   		
+			    </classes>
+	  </test> <!-- Test -->
+	  <test thread-count="5" name="Basics3Basics4">
+			    <classes>
+			    	<class name="annotations.Basics3"/> 					       
+			        <class name="annotations.Basics4"/>			        		
+			    </classes>
+	  </test>  <!--Test -->	 
+</suite> <!-- Suite -->
